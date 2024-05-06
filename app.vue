@@ -20,6 +20,13 @@ const totalBounty = computed((): number => {
   }
   return total;
 });
+
+const onIncrementBoundy = (id: number): void => {
+  const character = characterList.value.get(id);
+  if (character !== undefined) {
+    character.bounty += 1000;
+  }
+};
 </script>
 
 <template>
@@ -29,8 +36,10 @@ const totalBounty = computed((): number => {
     <OneCharacter
       v-for="[id, character] in characterList"
       :key="id"
+      :id="id"
       :name="character.name"
       :bounty="character.bounty"
+      @incrementBounty="onIncrementBoundy"
     />
   </section>
 </template>

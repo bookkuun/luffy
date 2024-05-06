@@ -1,15 +1,19 @@
 <script setup lang="ts">
 interface Props {
+  id: number;
   name: string;
   bounty: number;
 }
 
-const props = defineProps<Props>();
+type Emits = {
+  incrementBounty: [id: number];
+};
 
-const bounty = ref(props.bounty);
+const props = defineProps<Props>();
+const emit = defineEmits<Emits>();
 
 const bountyUp = () => {
-  bounty.value += 1000;
+  emit("incrementBounty", props.id);
 };
 </script>
 

@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import type { Character } from "@/interfaces";
 
+definePageMeta({
+  layout: "character",
+});
+
+useHead({
+  title: "キャラクターリスト",
+});
+
 const characterList = useState<Map<number, Character>>("characterList");
 </script>
 

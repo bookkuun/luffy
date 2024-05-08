@@ -1,6 +1,14 @@
 <script setup lang="ts">
 import type { Character } from "@/interfaces";
 
+const SITE_TITLE = "ワンピース";
+
+useHead({
+  titleTemplate: (title) => {
+    return title ? `${title} | ${SITE_TITLE}` : SITE_TITLE;
+  },
+});
+
 useState<Map<number, Character>>(
   "characterList",
   (): Map<number, Character> => {
@@ -14,9 +22,9 @@ useState<Map<number, Character>>(
 </script>
 
 <template>
-  <!-- <BaseSection /> -->
-  <header><h1>ワンピース</h1></header>
-  <main><NuxtPage /></main>
+  <NuxtLayout>
+    <NuxtPage />
+  </NuxtLayout>
 </template>
 
 <style>
